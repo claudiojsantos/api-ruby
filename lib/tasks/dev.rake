@@ -1,6 +1,10 @@
 namespace :dev do
   desc 'Cadastra os Contatos'
   task setup: :environment do
+    p 'Configuração Banco de Dados...'
+    %x(rails db:drop db:create db:migrate)
+    p 'Término configuração Banco de Dados'
+
     p 'Cadastrando Tipos de Contatos'
     kinds = %w(Amigos Comercial Diversos)
     kinds.each do |kind|
@@ -24,11 +28,24 @@ namespace :dev do
     p 'Cadastrando os telefones...'
     Contact.all.each do |contact|
       Random.rand(5).times do |i|
-        phone = Phone.create!(number: Faker::PhoneNumber.cell_phone, contact_id: contact.id)
+        phone = Phone.create!(
+          number: Faker::PhoneNumber.cell_phone, 
+          contact: contact
+        )
         contact.phones << phone
         contact.save!
       end
     end
     p 'Telefones cadastrados com sucesso.'
+
+    p 'Cadastrando endereços...'
+    Contact.all.each do |contact|
+      Address.create!(
+        street: Faker::Address.street_name,
+        city: Faker::Address.city,
+        contact: contact
+      )
+    end
+    p 'Endereços cadastrados com sucesso'
   end
 end

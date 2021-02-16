@@ -16,7 +16,7 @@ class Contact < ApplicationRecord
       email: email,
       birthdate: (I18n.l(birthdate) unless birthdate.blank?),
       kind_id: kind_id,
-      phone_attributes: phones
+      phone: phones
     }
   end
 

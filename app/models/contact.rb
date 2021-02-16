@@ -2,6 +2,8 @@ class Contact < ApplicationRecord
   belongs_to :kind, optional: true
   has_many :phones
 
+  accepts_nested_attributes_for :phones, allow_destroy: true
+
   # def birthdate_br
   #   I18n.l(self.birthdate) unless self.birthdate.blank?
   # end
@@ -10,8 +12,16 @@ class Contact < ApplicationRecord
     {
       name: name,
       email: email,
-      birthdate: (I18n.l(birthdate) unless birthdate.blank?)
+      birthdate: (I18n.l(birthdate) unless birthdate.blank?),
+      kind_id: kind_id,
+      phone_attributes: phones
     }
+  end
+
+  def as_json(option = {})
+    hash = super(option)
+    hash[:birthdate] = (I18n.l(birthdate) unless birthdate.blank?)
+    hash
   end
 
   # def author

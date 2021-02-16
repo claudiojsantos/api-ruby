@@ -1,5 +1,18 @@
 class Contact < ApplicationRecord
   belongs_to :kind, optional: true
+  has_many :phones
+
+  # def birthdate_br
+  #   I18n.l(self.birthdate) unless self.birthdate.blank?
+  # end
+
+  def to_br
+    {
+      name: name,
+      email: email,
+      birthdate: (I18n.l(birthdate) unless birthdate.blank?)
+    }
+  end
 
   # def author
   #   'Claudio Santos'
@@ -17,11 +30,11 @@ class Contact < ApplicationRecord
   #   )
   # end
 
-  def hello
-    I18n.t('hello')
-  end
+  # def hello
+  #   I18n.t('hello')
+  # end
 
-  def i18n
-    I18n.default_locale
-  end
+  # def i18n
+  #   I18n.default_locale
+  # end
 end

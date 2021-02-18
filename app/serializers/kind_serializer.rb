@@ -1,3 +1,5 @@
-class KindSerializer < ActiveModel::Serializer
-  attributes :id, :description
+module V1
+  class KindSerializer < ActiveModel::Serializer
+    attributes :id, :description
+  end
 end

@@ -100,7 +100,6 @@ GEM
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
     jsonapi-renderer (0.2.2)
-    jwt (2.2.2)
     kramdown (2.3.0)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -218,6 +217,10 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.0.0)
+    versionist (2.0.1)
+      activesupport (>= 3)
+      railties (>= 3)
+      yard (~> 0.9.20)
     warden (1.2.9)
       rack (>= 2.0.9)
     websocket-driver (0.7.3)
@@ -236,7 +239,6 @@ DEPENDENCIES
   devise-i18n
   devise_token_auth
   faker
-  jwt
   listen (~> 3.3)
   puma (~> 5.0)
   rack-cors
@@ -247,6 +249,7 @@ DEPENDENCIES
   spring
   sqlite3 (~> 1.4)
   tzinfo-data
+  versionist
 
 RUBY VERSION
    ruby 2.7.2p137

@@ -98,6 +98,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
     jsonapi-renderer (0.2.2)
+    jwt (2.2.2)
     kramdown (2.3.0)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -232,6 +233,7 @@ DEPENDENCIES
   byebug
   devise_token_auth
   faker
+  jwt
   listen (~> 3.3)
   puma (~> 5.0)
   rack-cors
